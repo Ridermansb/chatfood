@@ -1,7 +1,6 @@
 /* eslint-env node */
 
 const path = require('path');
-const webpack = require('webpack');
 const TerserJSPlugin = require('terser-webpack-plugin');
 const safePostCssParser = require('postcss-safe-parser');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
@@ -21,13 +20,13 @@ module.exports = () => {
             filename: '[name]-[contenthash:8].js',
             chunkFilename: '[name]-[chunkhash].js',
             publicPath: process.env.PUBLIC_PATH || '/',
-            sourceMapFilename: '[name]-[hash].js.map',
+            sourceMapFilename: '[name]-[contenthash:8].js.map',
             pathinfo: false,
             libraryTarget: 'umd',
             globalObject: "(typeof window !== 'undefined' ? window : this)",
         },
         optimization: {
-            moduleIds: 'hashed',
+            moduleIds: 'deterministic',
             runtimeChunk: 'single',
             splitChunks: {
                 chunks: 'all',
@@ -117,9 +116,8 @@ module.exports = () => {
             ],
         },
         plugins: [
-            new webpack.optimize.OccurrenceOrderPlugin(),
             new CompressionPlugin({
-                filename: '[path].gz[query]',
+                filename: '[path][name].gz[query]',
                 algorithm: 'gzip',
                 test: /\.(js|html)$/,
                 threshold: 10240,

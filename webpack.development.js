@@ -31,7 +31,7 @@ module.exports = {
         https: true,
         inline: true,
         overlay: true,
-        port: 7000,
+        port: 9500,
         host: '0.0.0.0',
         historyApiFallback: true,
         after: function () {

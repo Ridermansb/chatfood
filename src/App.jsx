@@ -1,8 +1,8 @@
 import React from 'react';
-import './style.css';
+import './assets/style.css';
 
 function App() {
-    return <div>hi</div>;
+    return <div>shi</div>;
 }
 
 export default App;

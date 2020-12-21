@@ -61,7 +61,6 @@ module.exports = function (environment, arguments_) {
             //     ],
             // }),
             new MiniCssExtractPlugin({
-                publicPath: 'styles/',
                 ignoreOrder: true,
                 filename:
                     mode === 'production'
@@ -69,8 +68,8 @@ module.exports = function (environment, arguments_) {
                         : '[name].css',
                 chunkFilename:
                     mode === 'production'
-                        ? '[id]-[contenthash].css'
-                        : '[id].css',
+                        ? '[name]-[contenthash].css'
+                        : '[name].css',
             }),
             new webpack.EnvironmentPlugin({
                 NODE_ENV: 'development',
@@ -95,10 +94,7 @@ module.exports = function (environment, arguments_) {
                     'msapplication-navbutton-color': '#1258ff',
                     'msapplication-starturl': '/?utm_source=a2hs',
                 },
-                favicon: path.resolve(
-                    sourceFolder,
-                    'assets/favicon/favicon.ico',
-                ),
+                favicon: './src/assets/favicon/favicon.ico',
                 template: path.resolve(__dirname, 'src', 'index.ejs'),
                 minify: { collapseWhitespace: true },
                 inlineSource: 'runtime.+\\.js',
@@ -113,6 +109,9 @@ module.exports = function (environment, arguments_) {
                 logo: './src/assets/logo.svg',
                 cache: true,
                 inject: true,
+                prefix: 'favicons/',
+                background: '#1258ff',
+                theme_color: '#ffffff',
                 favicons: {
                     appName: package_.name,
                     appDescription: package_.description,
@@ -125,7 +124,7 @@ module.exports = function (environment, arguments_) {
                     },
                 },
             }),
-            new webpack.HashedModuleIdsPlugin(),
+            new webpack.ids.HashedModuleIdsPlugin(),
         ],
         resolve: {
             extensions: ['.js', '.jsx'],
@@ -150,7 +149,7 @@ module.exports = function (environment, arguments_) {
                         {
                             loader: MiniCssExtractPlugin.loader,
                             options: {
-                                hmr: false, // mode !== 'production' || process.env.NODE_ENV === 'development',
+                                // hmr: false, // mode !== 'production' || process.env.NODE_ENV === 'development',
                                 esModule: true,
                             },
                         },
@@ -167,14 +166,14 @@ module.exports = function (environment, arguments_) {
                     test: /\.(webp|avif|gif|png|jpe?g)$/i,
                     use: {
                         loader: 'file-loader',
-                        query: { outputPath: 'assets/images/' },
+                        options: { outputPath: 'assets/images/' },
                     },
                 },
                 {
                     test: /\.(woff|woff2|eot|ttf|otf)$/,
                     use: {
                         loader: 'file-loader',
-                        query: { outputPath: 'assets/fonts/' },
+                        options: { outputPath: 'assets/fonts/' },
                     },
                 },
                 {
@@ -190,5 +189,5 @@ module.exports = function (environment, arguments_) {
         development: webpackDevelopmentConfig,
     };
 
-    return merge.smart(defaultConfig, modeConfig[mode] || {});
+    return merge.merge(defaultConfig, modeConfig[mode] || {});
 };
