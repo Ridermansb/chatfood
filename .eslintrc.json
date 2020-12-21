@@ -1,0 +1,42 @@
+{
+    "env": {
+        "commonjs": true,
+        "browser": true,
+        "es6": true
+    },
+    "extends": [
+        "eslint:recommended",
+        "plugin:react/recommended",
+        "plugin:unicorn/recommended",
+        "plugin:react-perf/recommended",
+        "plugin:react-hooks/recommended",
+        "plugin:prettier/recommended"
+    ],
+    "parserOptions": {
+        "ecmaFeatures": {
+            "jsx": true
+        },
+        "ecmaVersion": 2020,
+        "sourceType": "module"
+    },
+    "plugins": ["import", "prettier"],
+    "globals": {
+        "__DEVELOPMENT__": "readonly",
+        "__PRODUCTION__": "readonly",
+        "__VERSION__": "readonly"
+    },
+    "rules": {
+        "react/prop-types": 0,
+        "unicorn/consistent-function-scoping": 0,
+        "unicorn/no-reduce": 0,
+        "unicorn/filename-case": 0,
+        "unicorn/no-nested-ternary": 0,
+        "unicorn/prefer-spread": 0,
+        "react-perf/jsx-no-new-function-as-prop": 0
+    },
+    "settings": {
+        "react": {
+            "version": "detect"
+        }
+    }
+}

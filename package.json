@@ -1,0 +1,68 @@
+{
+  "name": "chatfood",
+  "version": "0.0.1",
+  "description": "Chatfood front-end test resolution",
+  "private": true,
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint --ext .js --ext .jsx src",
+    "start": "webpack server",
+    "build": "cross-env NODE_ENV=production webpack --mode production"
+  },
+  "bugs": {
+    "url": "https://github.com/Ridermansb/chatfood/issues",
+    "email": "ridermansb@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com//Ridermansb/chatfood.git"
+  },
+  "author": {
+    "name": "Riderman de Sousa Barbosa",
+    "email": "ridermansb@gmail.com",
+    "url": "https://about.me/ridermansb/"
+  },
+  "license": "ISC",
+  "devDependencies": {
+    "@pmmmwh/react-refresh-webpack-plugin": "^0.4.3",
+    "babel-eslint": "^10.1.0",
+    "case-sensitive-paths-webpack-plugin": "^2.3.0",
+    "compression-webpack-plugin": "^7.1.0",
+    "copy-webpack-plugin": "^7.0.0",
+    "cross-env": "^7.0.3",
+    "cssnano": "^4.1.10",
+    "dotenv": "^8.2.0",
+    "eslint": "^7.16.0",
+    "eslint-config-prettier": "^7.1.0",
+    "eslint-config-react-app": "^6.0.0",
+    "eslint-loader": "^4.0.2",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-prettier": "^3.3.0",
+    "eslint-plugin-react": "^7.21.5",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "eslint-plugin-react-perf": "^3.3.0",
+    "eslint-plugin-unicorn": "^24.0.0",
+    "favicons-webpack-plugin": "^4.2.0",
+    "file-loader": "^6.2.0",
+    "git-revision-webpack-plugin": "^3.0.6",
+    "html-webpack-plugin": "^4.5.0",
+    "mini-css-extract-plugin": "^1.3.3",
+    "optimize-css-assets-webpack-plugin": "^5.0.4",
+    "postcss-safe-parser": "^5.0.2",
+    "prettier": "^2.2.1",
+    "prop-types": "^15.7.2",
+    "robotstxt-webpack-plugin": "^7.0.0",
+    "script-ext-html-webpack-plugin": "^2.1.5",
+    "style-loader": "^2.0.0",
+    "terser-webpack-plugin": "^5.0.3",
+    "webpack": "^5.11.0",
+    "webpack-cli": "^4.2.0",
+    "webpack-dev-server": "^3.11.0",
+    "webpack-merge": "^5.7.2"
+  },
+  "dependencies": {
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1"
+  }
+}

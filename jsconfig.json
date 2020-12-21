@@ -1,0 +1,26 @@
+{
+    "compilerOptions": {
+        "jsx": "react",
+        "moduleResolution": "node",
+        "experimentalDecorators": true,
+        "allowSyntheticDefaultImports": true,
+        "baseUrl": ".",
+        "target": "es2017",
+        "module": "es6",
+        "paths": {
+            "@components/*": [
+                "src/components/*"
+            ],
+            "@assets/*": [
+                "src/assets/*"
+            ]
+        }
+    },
+    "exclude": [
+        "build",
+        "node_modules",
+        ".vscode",
+        "coverage",
+        "gtm"
+    ]
+}
