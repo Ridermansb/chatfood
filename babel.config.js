@@ -32,6 +32,7 @@ module.exports = function (api) {
         ],
         plugins: [
             'syntax-async-functions',
+            '@babel/plugin-transform-runtime',
             '@babel/plugin-transform-async-to-generator',
             [
                 '@babel/plugin-transform-arrow-functions',
@@ -71,8 +72,8 @@ module.exports = function (api) {
                 sourceMaps: true,
                 plugins: [
                     'react-refresh/babel',
-                    // '@babel/plugin-transform-react-jsx-source',
-                    // '@babel/plugin-transform-react-display-name',
+                    '@babel/plugin-transform-react-jsx-source',
+                    '@babel/plugin-transform-react-display-name',
                 ],
             },
             test: {
