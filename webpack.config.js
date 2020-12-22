@@ -168,7 +168,7 @@ module.exports = function (environment, arguments_) {
     };
 
     const modeConfig = {
-        production: webpackProductionConfig(appVersion),
+        production: webpackProductionConfig,
         development: webpackDevelopmentConfig,
     };
 
