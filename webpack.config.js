@@ -144,14 +144,10 @@ module.exports = function (environment, arguments_) {
                 },
                 {
                     test: /\.css$/i,
-                    include: [sourceFolder, /uikit/],
+                    include: [sourceFolder],
                     use: [
                         {
                             loader: MiniCssExtractPlugin.loader,
-                            options: {
-                                // hmr: false, // mode !== 'production' || process.env.NODE_ENV === 'development',
-                                esModule: true,
-                            },
                         },
                         {
                             loader: 'css-loader',
