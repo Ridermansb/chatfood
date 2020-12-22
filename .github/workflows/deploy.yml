@@ -63,6 +63,7 @@ jobs:
             - name: Vercel
               uses: amondnet/vercel-action@v20.0.0
               with:
+                buildOption: true
                 vercel-token: ${{ secrets.VERCEL_TOKEN }}
                 github-token: ${{ secrets.GITHUB_TOKEN }}
                 vercel-args: '--prod'
