@@ -7,6 +7,8 @@ on:
 jobs:
     build:
         runs-on: ubuntu-latest
+        outputs:
+            npmCacheDirectory: ${{ steps.npm-cache.outputs.npmCacheDirectory }}
         steps:
             - uses: actions/checkout@v2
             - uses: actions/setup-node@v2
@@ -47,6 +49,8 @@ jobs:
               with:
                   node-version: '14'
 
+            - run: echo "::debug::Set the Octocat variable"
+            - run: echo "::debug::${{ needs.build.outputs.npmCacheDirectory }}"
             - run: "echo ${{ needs.build.outputs.npmCacheDirectory }}"
             - run: echo ${{ needs.build.outputs.npmCacheDirectory }}
 
