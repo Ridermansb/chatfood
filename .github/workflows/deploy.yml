@@ -17,8 +17,6 @@ jobs:
 
             - run: npm ci --prefer-offline --no-audit --progress=false
 
-            - run: npm config get cache
-
             # Cache node_modules
             - name: Get npm cache directory
               id: npm-cache
@@ -38,7 +36,7 @@ jobs:
                   key: ${{ runner.os }}-node_modules-${{ hashFiles('package-lock.json') }}
                   restore-keys: ${{ runner.os }}-node_modules
 
-            - run: npm test
+            - run: npm test -- --ci
 
     deploy:
         runs-on: ubuntu-latest
@@ -48,11 +46,6 @@ jobs:
             - uses: actions/setup-node@v2
               with:
                   node-version: '14'
-
-            - run: echo "::debug::Set the Octocat variable"
-            - run: echo "::debug::${{ needs.build.outputs.npmCacheDirectory }}"
-            - run: "echo ${{ needs.build.outputs.npmCacheDirectory }}"
-            - run: echo ${{ needs.build.outputs.npmCacheDirectory }}
 
             # Cache node_modules
             - name: Cache .npm directory
