@@ -61,11 +61,6 @@ jobs:
                   key: ${{ runner.os }}-node_modules-${{ hashFiles('package-lock.json') }}
 
             - name: Vercel
-              uses: amondnet/vercel-action@v20.0.0
-              with:
-                buildOption: true
-                vercel-token: ${{ secrets.VERCEL_TOKEN }}
-                github-token: ${{ secrets.GITHUB_TOKEN }}
-                vercel-args: '--prod'
-                vercel-org-id: ${{ secrets.VERCEL_ORG_ID}}
-                vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID}}
+              run: |
+                npm i -g vercel
+                vercel --prod --confirm -t ${{ secrets.VERCEL_TOKEN }} -m githubCommitSha=${{ github.sha }} -m githubCommitAuthorName=${{ github.actor }} githubRepo=${{ github.repository }} -m githubCommitRepo=${{ github.repository }}
