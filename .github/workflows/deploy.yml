@@ -64,8 +64,9 @@ jobs:
               uses: amondnet/vercel-action@v20.0.0
               with:
                 buildOption: true
-                deploySource: ./dist
-                assignDomain: chatfood.ridermansb.dev
+                deploySource: "dist"
+                sourceDirectory: "src"
+                assignDomain: "chatfood.ridermansb.dev"
                 vercel-token: ${{ secrets.VERCEL_TOKEN }}
                 github-token: ${{ secrets.GITHUB_TOKEN }}
                 vercel-args: '--prod'
