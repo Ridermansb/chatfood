@@ -18,11 +18,12 @@ jobs:
             # Cache node_modules
             - name: Get npm cache directory
               id: npm-cache
-              run: echo "::set-output name=npm_cache_directory::$(npm config get cache)"
+              run: |
+                echo "::set-output name=npmCacheDirectory::$(npm config get cache)"
             - name: Cache .npm directory
               uses: actions/cache@v2
               with:
-                  path: ${{ steps.npm-cache.outputs.npm_cache_directory }}
+                  path: ${{ steps.npm-cache.outputs.npmCacheDirectory }}
                   key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
                   restore-keys: ${{ runner.os }}-node-
             - name: Cache node_modules directory
@@ -48,7 +49,7 @@ jobs:
             - name: Cache .npm directory
               uses: actions/cache@v2
               with:
-                  path: ${{ needs.build.outputs.npm_cache_directory }}
+                  path: ${{ needs.build.outputs.npmCacheDirectory }}
                   key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
             - name: Cache node_modules
               id: cache-node_modules
