@@ -5,7 +5,6 @@ const webpack = require('webpack');
 const merge = require('webpack-merge');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
-const GitRevisionPlugin = require('git-revision-webpack-plugin');
 const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 // const CopyWebpackPlugin = require('copy-webpack-plugin');
@@ -16,17 +15,10 @@ const package_ = require('./package.json');
 
 require('dotenv').config();
 
-/**
- * Assume version as git describe
- * @see https://medium.com/bind-solution/dynamic-version-update-with-git-describe-477e8cd2a306
- */
-const gitRevisionPlugin = new GitRevisionPlugin();
-
 const sourceFolder = path.resolve(__dirname, 'src');
 
 module.exports = function (environment, arguments_) {
     const mode = arguments_.mode || 'development';
-    const appVersion = process.env.VERSION || gitRevisionPlugin.version();
 
     const isDevelopmentEnvironment = mode === 'development';
     const isCI = !!process.env.CI;
@@ -34,11 +26,7 @@ module.exports = function (environment, arguments_) {
     if (isCI && isDevelopmentEnvironment) {
         console.warn('You are building webpack in development mode but on CI');
     } else {
-        console.log(
-            'Building %s version with webpack in "%s" mode',
-            appVersion,
-            mode,
-        );
+        console.log('Building with webpack in "%s" mode', mode);
     }
 
     const defaultConfig = {
@@ -75,7 +63,6 @@ module.exports = function (environment, arguments_) {
                 NODE_ENV: 'development',
             }),
             new webpack.DefinePlugin({
-                __VERSION__: JSON.stringify(appVersion),
                 __DEVELOPMENT__: JSON.stringify(mode === 'development'),
                 __PRODUCTION__: JSON.stringify(mode === 'production'),
             }),

@@ -63,4 +63,4 @@ jobs:
             - name: Vercel
               run: |
                 npm i -g vercel
-                vercel --prod --confirm -t ${{ secrets.VERCEL_TOKEN }} -m githubCommitSha=${{ github.sha }} -m githubCommitAuthorName=${{ github.actor }} githubRepo=${{ github.repository }} -m githubCommitRepo=${{ github.repository }}
+                vercel --prod --confirm -t ${{ secrets.VERCEL_TOKEN }} -m githubCommitSha=${{ github.sha }} -m githubCommitAuthorName=${{ github.actor }} -m githubRepo=${{ github.repository }}

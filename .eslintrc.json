@@ -23,8 +23,7 @@
     "plugins": ["import", "prettier"],
     "globals": {
         "__DEVELOPMENT__": "readonly",
-        "__PRODUCTION__": "readonly",
-        "__VERSION__": "readonly"
+        "__PRODUCTION__": "readonly"
     },
     "rules": {
         "react/prop-types": 0,
