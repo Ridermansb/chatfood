@@ -2,7 +2,9 @@
     "version": 2,
     "public": false,
     "github": {
-        "enabled": true
+        "enabled": true,
+        "silent": true,
+        "autoJobCancelation": true
     },
     "rewrites": [
         {

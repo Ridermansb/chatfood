@@ -1,15 +1,15 @@
 /* eslint-env node */
 
-const path = require('path');
-const TerserJSPlugin = require('terser-webpack-plugin');
-const safePostCssParser = require('postcss-safe-parser');
-const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
-const CompressionPlugin = require('compression-webpack-plugin');
-const RobotstxtPlugin = require('robotstxt-webpack-plugin');
+import path from 'path';
+import * as webpack from 'webpack';
+import TerserJSPlugin from 'terser-webpack-plugin';
+import CssMinimizerPlugin from 'css-minimizer-webpack-plugin';
+import CompressionPlugin from 'compression-webpack-plugin';
+import RobotstxtPlugin from 'robotstxt-webpack-plugin';
 
 const sourceFolder = path.resolve(__dirname, 'src');
 
-module.exports = {
+const config: webpack.Configuration = {
     cache: true,
     mode: 'production',
     devtool: 'hidden-source-map',
@@ -47,7 +47,11 @@ module.exports = {
                     test: /[/\\]node_modules[/\\]/,
                     chunks: 'all',
                     priority: -10,
-                    name(module, chunks, cacheGroupKey) {
+                    name(
+                        module: webpack.Module,
+                        chunks: Array<webpack.Chunk>,
+                        cacheGroupKey: string,
+                    ): string {
                         const moduleFileName = module
                             .identifier()
                             .split('/')
@@ -74,11 +78,10 @@ module.exports = {
                 terserOptions: {
                     sourceMap: true,
                     parse: {
-                        ecma: 8,
+                        ecma: 2015,
                     },
                     compress: {
                         ecma: 5,
-                        warnings: false,
                         comparisons: false,
                         inline: 2,
                     },
@@ -95,22 +98,8 @@ module.exports = {
                 },
                 extractComments: false,
             }),
-            new OptimizeCSSAssetsPlugin({
-                cssProcessor: require('cssnano'),
-                cssProcessorPluginOptions: {
-                    preset: [
-                        'default',
-                        { discardComments: { removeAll: true } },
-                    ],
-                },
-                canPrint: true,
-                cssProcessorOptions: {
-                    parser: safePostCssParser,
-                    map: {
-                        inline: false,
-                        annotation: true,
-                    },
-                },
+            new CssMinimizerPlugin({
+                cache: true,
             }),
         ],
     },
@@ -128,3 +117,5 @@ module.exports = {
         hints: 'warning',
     },
 };
+
+export default config;

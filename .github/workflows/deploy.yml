@@ -36,7 +36,7 @@ jobs:
                   key: ${{ runner.os }}-node_modules-${{ hashFiles('package-lock.json') }}
                   restore-keys: ${{ runner.os }}-node_modules
 
-            - run: npm test -- --ci
+            - run: npm test -- --ci --silent
 
     deploy:
         runs-on: ubuntu-latest

@@ -1,23 +1,28 @@
 /* eslint-env node */
 
-const path = require('path');
-const webpack = require('webpack');
-const merge = require('webpack-merge');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
-const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-// const CopyWebpackPlugin = require('copy-webpack-plugin');
-const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
-const webpackDevelopmentConfig = require('./webpack.development.js');
-const webpackProductionConfig = require('./webpack.production.js');
-const package_ = require('./package.json');
+import path from 'path';
+import webpack from 'webpack';
+import merge from 'webpack-merge';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
+import CaseSensitivePathsPlugin from 'case-sensitive-paths-webpack-plugin';
+import ScriptExtHtmlWebpackPlugin from 'script-ext-html-webpack-plugin';
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+// import CopyWebpackPlugin from 'copy-webpack-plugin';
+import FaviconsWebpackPlugin from 'favicons-webpack-plugin';
+import webpackDevelopmentConfig from './webpack.development';
+import webpackProductionConfig from './webpack.production';
+import package_ from './package.json';
 
+// eslint-disable-next-line @typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-member-access,@typescript-eslint/no-var-requires
 require('dotenv').config();
 
 const sourceFolder = path.resolve(__dirname, 'src');
 
-module.exports = function (environment, arguments_) {
+interface IArguments {
+    mode: string;
+}
+
+module.exports = function (environment: unknown, arguments_: IArguments) {
     const mode = arguments_.mode || 'development';
 
     const isDevelopmentEnvironment = mode === 'development';
@@ -97,12 +102,9 @@ module.exports = function (environment, arguments_) {
                 cache: true,
                 inject: true,
                 prefix: 'favicons/',
-                background: '#1258ff',
-                theme_color: '#ffffff',
                 favicons: {
                     appName: package_.name,
                     appDescription: package_.description,
-                    developerName: package_.author,
                     background: '#fff',
                     theme_color: '#333',
                     icons: {
@@ -114,7 +116,7 @@ module.exports = function (environment, arguments_) {
             new webpack.ids.HashedModuleIdsPlugin(),
         ],
         resolve: {
-            extensions: ['.js', '.jsx'],
+            extensions: ['.ts', '.tsx', '.js', '.jsx'],
         },
         module: {
             rules: [
@@ -167,10 +169,15 @@ module.exports = function (environment, arguments_) {
         },
     };
 
-    const modeConfig = {
-        production: webpackProductionConfig,
-        development: webpackDevelopmentConfig,
-    };
+    const modeConfig = new Map<string, webpack.Configuration>([
+        ['production', webpackProductionConfig],
+        ['development', webpackDevelopmentConfig],
+    ]);
 
-    return merge.merge(defaultConfig, modeConfig[mode] || {});
+    const config = modeConfig.get(mode);
+
+    if (config) {
+        return merge<webpack.Configuration>(defaultConfig, config);
+    }
+    return defaultConfig;
 };

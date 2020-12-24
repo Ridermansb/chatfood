@@ -1,0 +1,42 @@
+{
+    "compilerOptions": {
+        "outDir": "./dist/",
+        "removeComments": true,
+        "preserveConstEnums": true,
+        "isolatedModules": true,
+        "noImplicitAny": true,
+        //    "module": "es6",
+        //    "target": "es5",
+        //    "target": "next",
+        "lib": [
+            "dom",
+            "dom.iterable",
+            "esnext",
+            "es5",
+            "es2015.promise"
+        ],
+        "allowJs": true,
+        "sourceMap": true,
+        "esModuleInterop": true,
+        "allowSyntheticDefaultImports": true,
+        "strict": true,
+        "declaration": true,
+        "forceConsistentCasingInFileNames": true,
+        "moduleResolution": "node",
+        "resolveJsonModule": true,
+        "jsx": "react",
+        "types": [
+            "jest",
+            "node",
+            "react",
+            "react-dom",
+            "@testing-library/jest-dom"
+        ]
+    },
+    "include": ["src/**/*", "src/jest.setup.ts", "node_modules/jest-dom"],
+    "exclude": [
+        "node_modules",
+        "dist",
+        "**/*.test.ts"
+    ]
+}
