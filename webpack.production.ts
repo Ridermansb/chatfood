@@ -5,7 +5,6 @@ import * as webpack from 'webpack';
 import TerserJSPlugin from 'terser-webpack-plugin';
 import CssMinimizerPlugin from 'css-minimizer-webpack-plugin';
 import CompressionPlugin from 'compression-webpack-plugin';
-import RobotstxtPlugin from 'robotstxt-webpack-plugin';
 
 const sourceFolder = path.resolve(__dirname, 'src');
 
@@ -111,7 +110,6 @@ const config: webpack.Configuration = {
             threshold: 10240,
             minRatio: 0.8,
         }),
-        new RobotstxtPlugin(),
     ],
     performance: {
         hints: 'warning',

@@ -14,12 +14,6 @@ module.exports = function (api) {
     return {
         presets: [
             [
-                '@babel/preset-react',
-                {
-                    development: isDevelopmentEnvironment,
-                },
-            ],
-            [
                 '@babel/preset-env',
                 {
                     modules: false,
@@ -27,6 +21,20 @@ module.exports = function (api) {
                     shippedProposals: true,
                     useBuiltIns: 'entry',
                     corejs: 3,
+                },
+            ],
+            [
+                '@babel/preset-react',
+                {
+                    development: isDevelopmentEnvironment,
+                },
+            ],
+            [
+                '@babel/preset-typescript',
+                {
+                    isTSX: true,
+                    allExtensions: true,
+                    onlyRemoveTypeImports: true,
                 },
             ],
         ],
@@ -42,7 +50,7 @@ module.exports = function (api) {
                 'module-resolver',
                 {
                     root: ['.'],
-                    extensions: ['.js', '.jsx'],
+                    extensions: ['.js', '.jsx', '.ts', '.tsx'],
                     alias: {
                         '^@components/(.+)': './src/components/\\1',
                         '^@assets/(.+)': './src/assets/\\1',

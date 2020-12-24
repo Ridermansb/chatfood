@@ -121,7 +121,7 @@ module.exports = function (environment: unknown, arguments_: IArguments) {
         module: {
             rules: [
                 {
-                    test: /\.m?jsx?$/i,
+                    test: /\.m?[jt]sx?$/i,
                     exclude: /node_modules|dist|vendors/,
                     include: [sourceFolder],
                     use: {
