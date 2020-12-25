@@ -12,6 +12,10 @@
  - [browserlist][browserlist] _ensure browsers compatibility_
 
 
+## Linters
+
+ - [eslint-plugin-jsx-a11y][eslint-plugin-jsx-a11y] _ensure accessibility rules on JSX elements._
+
 <!-- Links -->
 
 [jest]: https://jestjs.io/en/
@@ -24,3 +28,5 @@
 [editorconfig]: https://editorconfig.org/
 [prettier]: https://prettier.io/
 [browserlist]: https://github.com/browserslist/browserslist
+
+[eslint-plugin-jsx-a11y]: https://www.npmjs.com/package/eslint-plugin-jsx-a11y
