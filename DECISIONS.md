@@ -1,3 +1,7 @@
+## Architecture
+
+ - [git oneflow][git-oneflow] _as git branch workflow_
+
 ## Stack
 
  - [jest][jest] _to run unit tests_
@@ -28,5 +32,7 @@
 [editorconfig]: https://editorconfig.org/
 [prettier]: https://prettier.io/
 [browserlist]: https://github.com/browserslist/browserslist
+
+[git-oneflow]: https://www.endoflineblog.com/oneflow-a-git-branching-model-and-workflow
 
 [eslint-plugin-jsx-a11y]: https://www.npmjs.com/package/eslint-plugin-jsx-a11y

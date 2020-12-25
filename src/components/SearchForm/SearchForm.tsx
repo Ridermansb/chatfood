@@ -6,7 +6,7 @@ const SearchForm: React.FunctionComponent = () => {
         <form data-testid="search-form">
             <h3>Search</h3>
 
-            <div className="relative pt-6">
+            <div className="relative pt-6 w-full">
                 <img
                     src={searchIcon}
                     className="absolute bottom-3 left-3"
@@ -16,7 +16,7 @@ const SearchForm: React.FunctionComponent = () => {
                     name="search"
                     type="search"
                     placeholder="Search for dishes..."
-                    className="pl-9"
+                    className="pl-9 w-full"
                 />
             </div>
         </form>
