@@ -1,0 +1,4 @@
+{
+  "*.{js,jsx,ts,tsx}": ["prettier --write", "npm run lint -- --fix --cache", "npm test -- --ci --silent"],
+  "*.{png,jpeg,jpg,gif,svg}": ["imagemin-lint-staged"]
+}
