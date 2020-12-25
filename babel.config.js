@@ -8,7 +8,7 @@ module.exports = function (api) {
     } else {
         console.log(`Loading babel in ${api.env()} mode`);
     }
-    api.cache(isDevelopmentEnvironment);
+    api.cache.using(() => process.env.NODE_ENV);
 
     // noinspection SpellCheckingInspection
     return {
@@ -79,9 +79,14 @@ module.exports = function (api) {
             development: {
                 sourceMaps: true,
                 plugins: [
-                    'react-refresh/babel',
                     '@babel/plugin-transform-react-jsx-source',
                     '@babel/plugin-transform-react-display-name',
+                    [
+                        'react-refresh/babel',
+                        {
+                            disableRefreshCheck: true,
+                        },
+                    ],
                 ],
             },
             test: {

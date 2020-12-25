@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+
+/*@font-face {*/
+/*    font-family: 'Inter';*/
+/*    src: url('./assets/inter.eot');*/
+/*    src: local('Inter'), local('inter'),*/
+/*    url('./assets/inter.eot?#iefix') format('embedded-opentype'),*/
+/*    url('./assets/inter.woff2') format('woff2'),*/
+/*    url('./assets/inter.woff') format('woff'),*/
+/*    url('./assets/inter.ttf') format('truetype');*/
+/*    font-weight: normal;*/
+/*    font-style: normal;*/
+/*    font-display: swap;*/
+/*}*/
+
+
+:root {
+    --color-charcoal: #243c5a;
+    --color-midnight: #071C4D;
+
+    --color-gray-default: #838DA6;
+    --color-gray-light: #EBEFF4;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@tailwind screens;

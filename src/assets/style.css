@@ -1,4 +1,7 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-@tailwind screens;
+h3 {
+    @apply text-midnight text-xl font-bold;
+}
+
+input {
+    @apply border-2 rounded-lg border-gray-light p-2;
+}

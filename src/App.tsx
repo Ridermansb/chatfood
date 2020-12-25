@@ -1,11 +1,13 @@
 import * as React from 'react';
+import NavBar from '@components/NavBar';
+import SearchForm from '@components/SearchForm';
+import './assets/app.css';
 import './assets/style.css';
-import NavBar from './components/NavBar';
 
 const App: React.FunctionComponent = () => (
     <React.StrictMode>
         <NavBar />
-        <h1 className="text-2xl text-center text-blue-900">chatfood</h1>
+        <SearchForm />
     </React.StrictMode>
 );
 

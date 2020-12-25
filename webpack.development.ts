@@ -36,16 +36,14 @@ const config: Configuration = {
         sourceMapFilename: '[name].js.map',
         pathinfo: false,
     },
-    plugins: [
-        new webpack.HotModuleReplacementPlugin(),
-        new ReactRefreshWebpackPlugin(),
-    ],
+    plugins: [new ReactRefreshWebpackPlugin()],
     devServer: {
         contentBase: [path.resolve('dist'), path.join(__dirname, 'forms')],
         disableHostCheck: true,
         compress: true,
         hot: true,
         https: true,
+        writeToDisk: true,
         inline: true,
         overlay: true,
         port: 9500,

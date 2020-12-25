@@ -1,5 +1,6 @@
 {
     "compilerOptions": {
+        "baseUrl": ".",
         "outDir": "./dist/",
         "removeComments": true,
         "preserveConstEnums": true,
@@ -27,6 +28,14 @@
         "moduleResolution": "node",
         "resolveJsonModule": true,
         "jsx": "react",
+        "paths": {
+            "@components/*": [
+                "src/components/*"
+            ],
+            "@assets/*": [
+                "src/assets/*"
+            ]
+        },
         "types": [
             "jest",
             "node",
@@ -35,7 +44,7 @@
             "@testing-library/jest-dom"
         ]
     },
-    "include": ["src/**/*", "src/jest.setup.ts", "node_modules/jest-dom"],
+    "include": ["src/**/*", "global.d.ts", "src/jest.setup.ts", "node_modules/jest-dom"],
     "exclude": [
         "node_modules",
         "dist",

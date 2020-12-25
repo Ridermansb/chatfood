@@ -9,9 +9,9 @@ describe('<App>', (): void => {
         render(<App />);
 
         // Act
-        await waitFor(() => screen.getByRole('heading'));
+        await waitFor(() => screen.getByTestId('search-form'));
 
         // Assert
-        expect(screen.getByRole('heading')).toHaveTextContent('chatfood');
+        expect(screen.getByTestId('search-form')).toBeInTheDocument();
     });
 });

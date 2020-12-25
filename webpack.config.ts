@@ -148,7 +148,7 @@ module.exports = function (environment: unknown, arguments_: IArguments) {
                     ],
                 },
                 {
-                    test: /\.(webp|avif|gif|png|jpe?g)$/i,
+                    test: /\.(svg|webp|avif|gif|png|jpe?g)$/i,
                     use: {
                         loader: 'file-loader',
                         options: { outputPath: 'assets/images/' },
@@ -161,10 +161,10 @@ module.exports = function (environment: unknown, arguments_: IArguments) {
                         options: { outputPath: 'assets/fonts/' },
                     },
                 },
-                {
-                    test: /\.svg$/i,
-                    loader: 'svg-inline-loader',
-                },
+                // {
+                //     test: /\.svg$/i,
+                //     loader: 'svg-inline-loader',
+                // },
             ],
         },
     };
