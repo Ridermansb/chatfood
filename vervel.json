@@ -10,6 +10,10 @@
         {
             "source": "/(.*)",
             "destination": "/index.html"
+        },
+        {
+            "source": "/api/:match*",
+            "destination": "https://chatfood-cdn.s3.eu-central-1.amazonaws.com/fe-code-challenge-1/:match*"
         }
     ]
 }

@@ -14,7 +14,9 @@
  - [editorconfig][editorconfig] _ensure every devs share the same IDE configuration_
  - [prettier][prettier] _code formatter cli_
  - [browserlist][browserlist] _ensure browsers compatibility_
-
+ - [msw][msw] _to easily mock api requests_
+ - [husky][husky] _make easy to run commands with git hook_
+ - [lint-staged][lint-staged] _run linters on git staged files_
 
 ## Linters
 
@@ -34,5 +36,8 @@
 [browserlist]: https://github.com/browserslist/browserslist
 
 [git-oneflow]: https://www.endoflineblog.com/oneflow-a-git-branching-model-and-workflow
+[msw]: https://mswjs.io
+[husky]: https://www.npmjs.com/package/husky
+[lint-staged]: https://github.com/okonet/lint-staged
 
 [eslint-plugin-jsx-a11y]: https://www.npmjs.com/package/eslint-plugin-jsx-a11y
