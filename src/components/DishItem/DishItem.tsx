@@ -20,7 +20,7 @@ const DishItem: React.FunctionComponent<Properties> = ({ dish }) => {
             <img
                 src={dish.photo}
                 alt={dish.name}
-                className="w-1/4 rounded-2xl ml-2 inline-block align-middle"
+                className="w-24 rounded-2xl ml-2 inline-block align-middle"
             />
         </div>
     );

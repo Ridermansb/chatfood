@@ -1,7 +1,9 @@
 import * as React from 'react';
+import { useEffect } from 'react';
 import NavBar from '@components/NavBar';
 import SearchForm from '@components/SearchForm';
 import DishItem from '@components/DishItem';
+import api from '@api';
 import './assets/app.css';
 import './assets/style.css';
 
@@ -21,12 +23,18 @@ const fakeDish: Dish = {
     category_id: '1',
 };
 
-const App: React.FunctionComponent = () => (
-    <React.StrictMode>
-        <NavBar />
-        <SearchForm />
-        <DishItem dish={fakeDish} />
-    </React.StrictMode>
-);
+const App: React.FunctionComponent = () => {
+    useEffect(() => {
+        api.dishes.get().then((menu) => console.log(menu));
+    }, []);
+
+    return (
+        <React.StrictMode>
+            <NavBar />
+            <SearchForm />
+            <DishItem dish={fakeDish} />
+        </React.StrictMode>
+    );
+};
 
 export default App;

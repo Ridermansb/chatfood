@@ -49,6 +49,23 @@ const config: Configuration = {
         port: 9500,
         host: '0.0.0.0',
         historyApiFallback: true,
+        headers: {
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Methods': 'GET, OPTIONS',
+            'Access-Control-Allow-Headers':
+                'X-Requested-With, content-type, Authorization',
+        },
+        proxy: {
+            '/api': {
+                changeOrigin: true,
+                target:
+                    process.env.API_URL ||
+                    'https://chatfood-cdn.s3.eu-central-1.amazonaws.com/fe-code-challenge-1',
+                pathRewrite: {
+                    '^/api': '',
+                },
+            },
+        },
         after: function (): void {
             console.log('Server ready!');
         },

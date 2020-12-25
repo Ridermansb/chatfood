@@ -54,6 +54,7 @@ module.exports = function (api) {
                     alias: {
                         '^@components/(.+)': './src/components/\\1',
                         '^@assets/(.+)': './src/assets/\\1',
+                        '^@api$': './src/api/index.ts',
                     },
                 },
             ],

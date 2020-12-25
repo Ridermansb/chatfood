@@ -70,6 +70,10 @@ module.exports = function (environment: unknown, arguments_: IArguments) {
             new webpack.DefinePlugin({
                 __DEVELOPMENT__: JSON.stringify(mode === 'development'),
                 __PRODUCTION__: JSON.stringify(mode === 'production'),
+                __API_URL__: JSON.stringify(
+                    process.env.API_URL ||
+                        'https://chatfood-cdn.s3.eu-central-1.amazonaws.com/fe-code-challenge-1',
+                ),
             }),
             new HtmlWebpackPlugin({
                 title: package_.name,

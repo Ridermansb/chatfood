@@ -31,7 +31,8 @@
     ],
     "globals": {
         "__DEVELOPMENT__": "readonly",
-        "__PRODUCTION__": "readonly"
+        "__PRODUCTION__": "readonly",
+        "__API_URL__": "readonly"
     },
     "overrides": [
         {
