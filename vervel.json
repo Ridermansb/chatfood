@@ -8,12 +8,12 @@
     },
     "rewrites": [
         {
-            "source": "/(.*)",
-            "destination": "/index.html"
+            "source": "/api/(.*)",
+            "destination": "https://chatfood-cdn.s3.eu-central-1.amazonaws.com/fe-code-challenge-1/$1",
         },
         {
-            "source": "/api/:match*",
-            "destination": "https://chatfood-cdn.s3.eu-central-1.amazonaws.com/fe-code-challenge-1/:match*"
+            "source": "/(.*)",
+            "destination": "/index.html"
         }
     ]
 }

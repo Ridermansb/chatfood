@@ -59,7 +59,6 @@ const config: Configuration = {
             '/api': {
                 changeOrigin: true,
                 target:
-                    process.env.API_URL ||
                     'https://chatfood-cdn.s3.eu-central-1.amazonaws.com/fe-code-challenge-1',
                 pathRewrite: {
                     '^/api': '',
