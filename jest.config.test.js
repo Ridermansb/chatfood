@@ -29,9 +29,9 @@ module.exports = {
     //     '^.+\\.tsx?$': 'ts-jest',
     // },
     globals: {
-        // __API_URL__: 'https://localhost:9500/api',
-        __API_URL__:
-            'https://chatfood-cdn.s3.eu-central-1.amazonaws.com/fe-code-challenge-1',
+        __API_URL__: 'https://localhost:9500/api',
+        // __API_URL__:
+        //     'https://chatfood-cdn.s3.eu-central-1.amazonaws.com/fe-code-challenge-1',
     },
     moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json'],
     moduleNameMapper: {

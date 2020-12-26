@@ -6,6 +6,17 @@
         "silent": true,
         "autoJobCancelation": true
     },
+    "headers": [
+        {
+            "source": "/(.*)",
+            "headers": [
+                {
+                    "key": "access-control-allow-origin",
+                    "value": "https://chatfood-cdn.s3.eu-central-1.amazonaws.com"
+                }
+            ]
+        }
+    ],
     "rewrites": [
         {
             "source": "/api/(.*)",
