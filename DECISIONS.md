@@ -6,7 +6,8 @@
 ## Stack
 
  - [jest][jest] _to run unit tests_
- - [testing-library][testing-library] _as test utilities_ 
+ - [testing-library][testing-library] _as test utilities_
+ - [user-event][user-event] _to simulate user events on tests_
  - [vercel][vercel] _where I deploy the app_
  - [tailwindcss][tailwindcss] _utility-first CSS framework_
  - [eslint][eslint] _ensure code style_ 
@@ -21,6 +22,7 @@
  - [redux-saga][redux-saga] _to handle async calls to the API_
  - [reduxsauce][reduxsauce] _helps to create actions and reducers for redux_
  - [why-did-you-render][why-did-you-render] _help identify unnecessary renders for components_ 
+ - [linkfunction][linkfunction] _help handle input change values_
 
 ## Linters
 
@@ -48,3 +50,5 @@
 [eslint-plugin-jsx-a11y]: https://www.npmjs.com/package/eslint-plugin-jsx-a11y
 [ducks-modular-redux]: https://github.com/erikras/ducks-modular-redux
 [why-did-you-render]: https://github.com/welldone-software/why-did-you-render
+[user-event]: https://github.com/testing-library/user-event
+[linkfunction]: https://github.com/ridermansb/linkfunction

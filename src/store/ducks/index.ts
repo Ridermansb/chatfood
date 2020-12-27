@@ -1,7 +1,5 @@
 import { combineReducers } from 'redux';
-import dishes, {
-    ActionCreators as DishesActionCreators,
-} from './dishes/dishes';
+import dishes, { ActionTypes as DishesActionCreators } from './dishes/dishes';
 
 const rootReducer = combineReducers({
     dishes,
