@@ -18,7 +18,7 @@ const SearchForm: React.FunctionComponent = () => {
     );
 
     return (
-        <form data-testid="search-form">
+        <form data-testid="search-form" className="px-5">
             <h3>Search</h3>
 
             <div className="relative pt-6 w-full">

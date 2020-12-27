@@ -3,7 +3,7 @@ declare type Stock = {
 };
 
 declare type Dish = {
-    id: string | number;
+    id: string;
     name: string;
     url: string;
     price: number;

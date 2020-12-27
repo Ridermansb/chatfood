@@ -9,6 +9,7 @@ module.exports = {
             colors: {
                 charcoal: 'var(--color-charcoal)',
                 midnight: 'var(--color-midnight)',
+                primary: 'var(--color-primary)',
                 gray: {
                     DEFAULT: 'var(--color-gray-default)',
                     light: 'var(--color-gray-light)',

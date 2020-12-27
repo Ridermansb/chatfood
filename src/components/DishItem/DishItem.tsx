@@ -1,5 +1,10 @@
 import * as React from 'react';
-import { memo, useMemo } from 'react';
+import { memo, useCallback, useMemo } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import clsx from 'clsx';
+import { CartItem, Creators as CartCreators } from '@store/ducks/cart/cart';
+import { getDishFromCart } from '@store/ducks/cart/selectors';
+import { ApplicationState } from '@store/ducks';
 
 type Properties = {
     dish: Dish;
@@ -21,10 +26,49 @@ const DishItem: React.FunctionComponent<Properties> = memo(({ dish }) => {
         [dish.discount_rate, dish.price],
     );
 
+    const dispatch = useDispatch();
+
+    const itemOnCart = useSelector<ApplicationState, CartItem | undefined>(
+        (state) => getDishFromCart(state, { dishId: dish.id }),
+    );
+
+    const itemOnCartQuantity = useMemo<number | undefined>(
+        () => itemOnCart?.quantity,
+        [itemOnCart?.quantity],
+    );
+
+    const itemClass = clsx('flex-1', {
+        'border-l-8 border-primary pl-5': itemOnCart,
+        'pl-6': !itemOnCart,
+    });
+    const rootClass = clsx('flex place-items-center');
+
+    const hasItemOnStock = useMemo<boolean>(() => {
+        const itemQuantity = itemOnCartQuantity || 0;
+        return dish.stock?.availability > itemQuantity;
+    }, [dish.stock, itemOnCartQuantity]);
+
+    const handleClick = useCallback(() => {
+        if (hasItemOnStock) {
+            dispatch(CartCreators.addItem(dish));
+        }
+    }, [dish, dispatch, hasItemOnStock]);
+
     return (
-        <div className="flex place-items-center">
-            <div className="flex-1">
-                <h4>{dish.name}</h4>
+        <div className={rootClass}>
+            <div
+                className={itemClass}
+                onClick={handleClick}
+                onKeyPress={handleClick}
+                tabIndex={0}
+                role="button"
+            >
+                <h4>
+                    {itemOnCartQuantity && itemOnCartQuantity > 1 && (
+                        <span>{itemOnCartQuantity} x </span>
+                    )}
+                    {dish.name}
+                </h4>
                 <p className="py-2 text-gray">{dish.description}</p>
                 <div>
                     <span className="font-bold">
