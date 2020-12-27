@@ -1,15 +1,22 @@
 import React from 'react';
-import { render, waitFor, screen } from '@testing-library/react';
+import { Provider } from 'react-redux';
+import { render, screen } from '@testing-library/react';
+import createStore from '@store';
 import App from './App';
 
 describe('<App />', (): void => {
     it('should render search-form', async () => {
         expect.assertions(1);
+        const store = createStore();
         // Arrange
-        render(<App />);
+        render(
+            <Provider store={store}>
+                <App />
+            </Provider>,
+        );
 
         // Act
-        await waitFor(() => screen.getByTestId('search-form'));
+        await screen.findByTestId('search-form');
 
         // Assert
         expect(screen.getByTestId('search-form')).toBeInTheDocument();

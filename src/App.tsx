@@ -1,38 +1,25 @@
 import * as React from 'react';
 import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { Creators as DishesCreators } from '@store/ducks/dishes/dishes';
 import NavBar from '@components/NavBar';
 import SearchForm from '@components/SearchForm';
-import DishItem from '@components/DishItem';
-import api from '@api';
+import DishesList from '@components/DishesList';
 import './assets/app.css';
 import './assets/style.css';
 
-const fakeDish: Dish = {
-    id: '1',
-    name: 'Chicken & Avocado',
-    url: 'chicken-avocado',
-    price: 3500,
-    discount_rate: 0.1,
-    stock: {
-        availability: 100,
-    },
-    description:
-        'Grilled chicken, avocado, tomato, iceberg lettuce and mayonnaise',
-    photo:
-        'https://chatfood-cdn.s3.eu-central-1.amazonaws.com/fe-code-challenge-1/chicken-avocado.jpg',
-    category_id: '1',
-};
-
 const App: React.FunctionComponent = () => {
+    const dispatch = useDispatch();
+
     useEffect(() => {
-        api.dishes.get().then((menu) => console.log(menu));
-    }, []);
+        dispatch(DishesCreators.fetchDishes());
+    }, [dispatch]);
 
     return (
         <React.StrictMode>
             <NavBar />
             <SearchForm />
-            <DishItem dish={fakeDish} />
+            <DishesList />
         </React.StrictMode>
     );
 };

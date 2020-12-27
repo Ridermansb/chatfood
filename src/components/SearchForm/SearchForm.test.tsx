@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, waitFor, screen } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import SearchForm from './SearchForm';
 
 describe('<SearchForm />', (): void => {
@@ -9,9 +9,7 @@ describe('<SearchForm />', (): void => {
         render(<SearchForm />);
 
         // Act
-        await waitFor(() =>
-            screen.getByPlaceholderText('Search for dishes...'),
-        );
+        await screen.findByPlaceholderText('Search for dishes...');
 
         // Assert
         expect(
@@ -25,7 +23,7 @@ describe('<SearchForm />', (): void => {
         render(<SearchForm />);
 
         // Act
-        await waitFor(() => screen.getByText('Search'));
+        await screen.findByText('Search');
 
         // Assert
         expect(screen.getByText('Search')).toBeInTheDocument();

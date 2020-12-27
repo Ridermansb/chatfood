@@ -1,6 +1,7 @@
 ## Architecture
 
  - [git oneflow][git-oneflow] _as git branch workflow_
+ - [redux ducks][ducks-modular-redux] _our store structure_
 
 ## Stack
 
@@ -17,6 +18,9 @@
  - [msw][msw] _to easily mock api requests_
  - [husky][husky] _make easy to run commands with git hook_
  - [lint-staged][lint-staged] _run linters on git staged files_
+ - [redux-saga][redux-saga] _to handle async calls to the API_
+ - [reduxsauce][reduxsauce] _helps to create actions and reducers for redux_
+ - [why-did-you-render][why-did-you-render] _help identify unnecessary renders for components_ 
 
 ## Linters
 
@@ -39,5 +43,8 @@
 [msw]: https://mswjs.io
 [husky]: https://www.npmjs.com/package/husky
 [lint-staged]: https://github.com/okonet/lint-staged
-
+[redux-saga]: https://redux-saga.js.org/
+[reduxsauce]: https://github.com/jkeam/reduxsauce
 [eslint-plugin-jsx-a11y]: https://www.npmjs.com/package/eslint-plugin-jsx-a11y
+[ducks-modular-redux]: https://github.com/erikras/ducks-modular-redux
+[why-did-you-render]: https://github.com/welldone-software/why-did-you-render

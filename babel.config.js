@@ -54,6 +54,8 @@ module.exports = function (api) {
                     alias: {
                         '^@components/(.+)': './src/components/\\1',
                         '^@assets/(.+)': './src/assets/\\1',
+                        '^@store/(.+)': './src/store/\\1',
+                        '^@store$': './src/store/index.ts',
                         '^@api$': './src/api/index.ts',
                     },
                 },
@@ -79,6 +81,17 @@ module.exports = function (api) {
             },
             development: {
                 sourceMaps: true,
+                presets: [
+                    [
+                        '@babel/preset-react',
+                        {
+                            development: true,
+                            runtime: 'automatic',
+                            importSource:
+                                '@welldone-software/why-did-you-render',
+                        },
+                    ],
+                ],
                 plugins: [
                     '@babel/plugin-transform-react-jsx-source',
                     '@babel/plugin-transform-react-display-name',

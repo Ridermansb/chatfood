@@ -11,12 +11,10 @@
             "@components/*": [
                 "src/components/*"
             ],
-            "@assets/*": [
-                "src/assets/*"
-            ],
-            "@api": [
-                "src/api/index.ts"
-            ]
+            "@assets/*": ["src/assets/*"],
+            "@store/*": ["src/store/*"],
+            "@store": ["src/store/index.ts"],
+            "@api": ["src/api/index.ts"]
         }
     },
     "exclude": [

@@ -40,6 +40,8 @@ module.exports = {
         '\\.(css|less|scss|sass)$': 'identity-obj-proxy',
         '@assets/(.*)': ['<rootDir>/assets/$1'],
         '@components/(.*)': ['<rootDir>/components/$1'],
+        '@store/(.*)': ['<rootDir>/store/$1'],
+        '@store': ['<rootDir>/store/index.ts'],
         '@api': ['<rootDir>/api/index.ts'],
     },
 };

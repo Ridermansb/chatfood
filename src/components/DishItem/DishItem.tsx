@@ -6,8 +6,8 @@ type Properties = {
 
 const DishItem: React.FunctionComponent<Properties> = ({ dish }) => {
     return (
-        <div className="flex">
-            <div>
+        <div className="flex place-items-center">
+            <div className="flex-1">
                 <h4>{dish.name}</h4>
                 <p className="py-2 text-gray">{dish.description}</p>
                 <div>
@@ -17,11 +17,15 @@ const DishItem: React.FunctionComponent<Properties> = ({ dish }) => {
                     </span>
                 </div>
             </div>
-            <img
-                src={dish.photo}
-                alt={dish.name}
-                className="w-24 rounded-2xl ml-2 inline-block align-middle"
-            />
+            <div>
+                {dish.photo && (
+                    <img
+                        src={dish.photo}
+                        alt={dish.name}
+                        className="w-24 rounded-2xl ml-2 inline-block align-middle"
+                    />
+                )}
+            </div>
         </div>
     );
 };

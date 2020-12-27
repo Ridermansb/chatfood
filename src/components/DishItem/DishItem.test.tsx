@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, waitFor, screen } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import DishItem from './DishItem';
 
 const fakeDish: Dish = {
@@ -26,7 +26,7 @@ describe('<DishItem />', (): void => {
         render(<DishItem dish={fakeDish} />);
 
         // Act
-        await waitFor(() => screen.getByText(fakeDish.name));
+        await screen.findByText(fakeDish.name);
 
         // Assert
         expect(screen.getByText(fakeDish.name)).toBeInTheDocument();
