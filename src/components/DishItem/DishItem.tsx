@@ -1,10 +1,11 @@
 import * as React from 'react';
+import { memo } from 'react';
 
 type Properties = {
     dish: Dish;
 };
 
-const DishItem: React.FunctionComponent<Properties> = ({ dish }) => {
+const DishItem: React.FunctionComponent<Properties> = memo(({ dish }) => {
     return (
         <div className="flex place-items-center">
             <div className="flex-1">
@@ -28,6 +29,7 @@ const DishItem: React.FunctionComponent<Properties> = ({ dish }) => {
             </div>
         </div>
     );
-};
+});
+DishItem.displayName = 'DishItem';
 
 export default DishItem;

@@ -32,7 +32,7 @@ const SearchForm: React.FunctionComponent = () => {
                     type="search"
                     placeholder="Search for dishes..."
                     className="pl-9 w-full"
-                    value={searchTerm}
+                    defaultValue={searchTerm}
                     onChange={handleChange}
                 />
             </div>
