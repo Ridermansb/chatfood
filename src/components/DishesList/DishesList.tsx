@@ -9,8 +9,6 @@ const DishesList: React.FunctionComponent = () => {
         getFiltered(state),
     );
 
-    console.log(dishes);
-
     return (
         <ul>
             {dishes.map((dish: Dish) => (
