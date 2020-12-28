@@ -48,6 +48,9 @@ describe('<DishesList />', () => {
                     categories: [],
                 },
             },
+            cart: {
+                items: [],
+            },
         });
 
         // Act
