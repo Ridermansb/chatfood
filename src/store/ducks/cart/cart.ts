@@ -12,12 +12,14 @@ export type State = {
 };
 export type ActionTypes = {
     readonly ADD_ITEM: 'ADD_ITEM';
+    readonly RESET: 'RESET';
 };
 export type AddItemAction = {
     readonly dish: Dish;
 };
 export type ActionCreators = {
     addItem: (options: AddItemAction) => Action<State>;
+    reset: () => Action<State>;
 };
 
 export const INITIAL_STATE: State = {
@@ -29,6 +31,7 @@ export const { Types, Creators } = createActions<ActionTypes, ActionCreators>(
     {
         // Ducks
         addItem: ['dish'],
+        reset: [],
     },
     { prefix: 'cart/' },
 );
@@ -45,11 +48,15 @@ const addItem = produce(function setAll(
         draft.items.push({ quantity: 1, dish: action.dish });
     }
 });
+const reset = produce(function setAll(draft: Draft<State> = INITIAL_STATE) {
+    draft.items = [];
+});
 
 const reducer: Reducer<State, Action<ActionTypes>> = createReducer(
     INITIAL_STATE,
     {
         [Types.ADD_ITEM]: addItem,
+        [Types.RESET]: reset,
     },
 );
 

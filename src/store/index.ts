@@ -10,6 +10,9 @@ const INITIAL_STATE: ApplicationState = {
             categories: [],
         },
     },
+    cart: {
+        items: [],
+    },
 };
 
 const sagaMiddleware = createSagaMiddleware();
