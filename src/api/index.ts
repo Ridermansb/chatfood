@@ -1,9 +1,11 @@
+import { GetApiResponse } from '@store/ducks/dishes/dishes';
+
 /**
  * @see https://dev.to/stroemdev/make-fetch-better-and-your-api-request-methods-easier-to-implement-e9i
  */
 
 type HttpDishes = {
-    get: () => Promise<Array<Dish>>;
+    get: () => Promise<GetApiResponse>;
 };
 
 class HttpClient {

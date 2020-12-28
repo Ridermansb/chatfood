@@ -50,6 +50,8 @@ const DishItem: React.FunctionComponent<Properties> = memo(({ dish }) => {
 
     const handleClick = useCallback(() => {
         if (hasItemOnStock) {
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore
             dispatch(CartCreators.addItem(dish));
         }
     }, [dish, dispatch, hasItemOnStock]);
