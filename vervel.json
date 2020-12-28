@@ -35,8 +35,8 @@
     ],
     "rewrites": [
         {
-            "source": "/api/(.*)",
-            "destination": "https://chatfood-cdn.s3.eu-central-1.amazonaws.com/fe-code-challenge-1/$1"
+            "source": "/api/menu.json",
+            "destination": "https://chatfood-cdn.s3.eu-central-1.amazonaws.com/fe-code-challenge-1/menu.json"
         },
         {
             "source": "/(.*)",
