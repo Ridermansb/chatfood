@@ -7,7 +7,7 @@ import HtmlWebpackPlugin from 'html-webpack-plugin';
 import CaseSensitivePathsPlugin from 'case-sensitive-paths-webpack-plugin';
 import ScriptExtHtmlWebpackPlugin from 'script-ext-html-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
-// import CopyWebpackPlugin from 'copy-webpack-plugin';
+import CopyWebpackPlugin from 'copy-webpack-plugin';
 import FaviconsWebpackPlugin from 'favicons-webpack-plugin';
 import webpackDevelopmentConfig from './webpack.development';
 import webpackProductionConfig from './webpack.production';
@@ -38,21 +38,34 @@ module.exports = function (environment: unknown, arguments_: IArguments) {
         target: 'web',
         plugins: [
             new CaseSensitivePathsPlugin(),
-            // new CopyWebpackPlugin({
-            //     patterns: [
-            //         {
-            //             from: './src/assets/android-chrome-192x192.png',
-            //             to: './',
-            //         },
-            //         {
-            //             from: './src/assets/android-chrome-512x512.png',
-            //             to: './',
-            //         },
-            //         { from: './src/assets/apple-touch-icon.png', to: './' },
-            //         { from: './src/assets/mstile-150x150.png', to: './' },
-            //         { from: './src/assets/safari-pinned-tab.svg', to: './' },
-            //     ],
-            // }),
+            new CopyWebpackPlugin({
+                patterns: [
+                    {
+                        from: './src/assets/favicon/android-chrome-192x192.png',
+                        to: './',
+                    },
+                    {
+                        from: './src/assets/favicon/android-chrome-512x512.png',
+                        to: './',
+                    },
+                    {
+                        from: './src/assets/favicon/apple-touch-icon.png',
+                        to: './',
+                    },
+                    {
+                        from: './src/assets/favicon/mstile-150x150.png',
+                        to: './',
+                    },
+                    {
+                        from: './src/assets/favicon/safari-pinned-tab.svg',
+                        to: './',
+                    },
+                    {
+                        from: './src/menu.json',
+                        to: './',
+                    },
+                ],
+            }),
             new MiniCssExtractPlugin({
                 ignoreOrder: true,
                 filename:
@@ -70,7 +83,7 @@ module.exports = function (environment: unknown, arguments_: IArguments) {
             new webpack.DefinePlugin({
                 __DEVELOPMENT__: JSON.stringify(mode === 'development'),
                 __PRODUCTION__: JSON.stringify(mode === 'production'),
-                __API_URL__: JSON.stringify(process.env.API_URL || '/api'),
+                __API_URL__: JSON.stringify(process.env.API_URL || ''),
             }),
             new HtmlWebpackPlugin({
                 title: package_.name,
