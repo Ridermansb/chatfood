@@ -1,5 +1,7 @@
 import React from 'react';
+import { Provider } from 'react-redux';
 import { render, screen } from '@testing-library/react';
+import createStore from '@store';
 import DishItem from './DishItem';
 
 const fakeDish: Dish = {
@@ -23,7 +25,12 @@ describe('<DishItem />', (): void => {
         expect.assertions(1);
 
         // Arrange
-        render(<DishItem dish={fakeDish} />);
+        const store = createStore();
+        render(
+            <Provider store={store}>
+                <DishItem dish={fakeDish} />
+            </Provider>,
+        );
 
         // Act
         await screen.findByText(fakeDish.name);
